@@ -11,3 +11,4 @@ Homestead.yaml
 npm-debug.log
 yarn-error.log
 data/postgres/base
+data/postgres/pg_stat_tmp
