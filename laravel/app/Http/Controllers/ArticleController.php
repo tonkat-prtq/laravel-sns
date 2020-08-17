@@ -13,4 +13,9 @@ class ArticleController extends Controller
     $articles = Article::all()->sortByDesc('created_at');
     return view('articles.index', ['articles' => $articles]);
   }
+
+  public function create() // Railsでいう def createみたいな感じ
+  {
+    return view('articles.create');
+  }
 }
