@@ -23,10 +23,14 @@ class ArticleController extends Controller
 
   public function store(ArticleRequest $request, Article $article)
   {
-    $article->title = $request->title;
-    $article->body = $request->body;
+    $article->fill($request->all());
     $article->user_id = $request->user()->id;
     $article->save();
     return redirect()->route('articles.index');
+  }
+
+  public function edit(Article $article) // Article型に型付けし、ArticleモデルのインスタンスのDI（依存性の注入）が行われている
+  {
+    return view('articles.edit', ['article' => $article]);
   }
 }
