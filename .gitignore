@@ -1,3 +1,4 @@
 data/postgres/base
 data/postgres/pg_stat_tmp
 data/postgres
+data/dind/buildkit/
