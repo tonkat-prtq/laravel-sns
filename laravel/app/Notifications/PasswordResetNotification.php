@@ -47,7 +47,7 @@ class PasswordResetNotification extends Notification
     public function toMail($notifiable)
     {
         return $this->mail
-            ->from(config('mail.form.address'), config('mail.from.name'))
+            ->from(config('mail.from.address'), config('mail.from.name'))
             ->to($notifiable->email)
             ->subject('[memo]パスワード再設定')
             ->text('emails.password_reset')
@@ -56,12 +56,12 @@ class PasswordResetNotification extends Notification
                     'token' => $this->token,
                     'email' => $notifiable->email,
                 ]),
-            'count' => config(
-                'auth.passwords'.
-                config('auth.defaults.passwords') .
-                '.expire'
-            ),
-        ]);
+                'count' => config(
+                    'auth.passwords.' .
+                    config('auth.defaults.passwords') .
+                    '.expire'
+                ),
+            ]);
     }
 
     /**
