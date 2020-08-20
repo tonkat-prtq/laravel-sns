@@ -63,8 +63,8 @@ class ArticleController extends Controller
     $article->likes()->attach($request->user()->id);
 
     return [
-      'id' = $article->id,
-      'countLikes' = $article->count_likes,
+      'id' => $article->id,
+      'countLikes' => $article->count_likes,
     ];
   }
 
