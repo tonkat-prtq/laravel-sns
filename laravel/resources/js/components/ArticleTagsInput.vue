@@ -27,10 +27,10 @@ export default {
       type: Array,
       default: [],
     },
-  },
-  autocompleteItems: {
-    type: Array,
-    default: [],
+    autocompleteItems: {
+      type: Array,
+      default: [],
+    },
   },
   data() {
     return {
