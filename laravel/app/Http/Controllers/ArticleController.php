@@ -44,7 +44,14 @@ class ArticleController extends Controller
 
   public function edit(Article $article) // Article型に型付けし、ArticleモデルのインスタンスのDI（依存性の注入）が行われている
   {
-    return view('articles.edit', ['article' => $article]);
+    $tagNames = $article->tags->map(function ($tag) {
+      return['text' => $tag->name];
+    });
+
+    return view('articles.edit', [
+      'article' => $article,
+      'tagNames' => $tagNames,
+    ]);
   }
 
   public function update(ArticleRequest $request, Article $article)
