@@ -4,10 +4,13 @@
       <i class="fas fa-user-circle fa-3x mr-1"></i>
     </a>
     <div>
-      <div class="font-weight-bold">{{ $article->user->name }}</div>
-      <a href="{{ route('users.show', ['name' => $article->user->name]) }}" class="text-dark">
-        <div class="font-weight-lighter">{{ $article->created_at->format('Y/m/d H:i') }}</div>
-      </a>
+      <div class="font-weight-bold">
+        <a href="{{ route('users.show', ['name' => $article->user->name]) }}" class="text-dark">
+        {{ $article->user->name }}
+      </div>
+      <div class="font-weight-lighter">
+        {{ $article->created_at->format('Y/m/d H:i') }}
+      </div>
     </div>
 
   @if( Auth::id() === $article->user_id )
@@ -15,7 +18,9 @@
       <div class="ml-auto card-text">
         <div class="dropdown">
           <a data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <i class="fas fa-ellipsis-v"></i>
+            <button type="button" class="btn btn-link text-muted m-0 p-2">
+              <i class="fas fa-ellipsis-v"></i>
+            </button>
           </a>
           <div class="dropdown-menu dropdown-menu-right">
             <a class="dropdown-item" href="{{ route("articles.edit", ['article' => $article]) }}">
@@ -73,7 +78,7 @@
         :initial-is-liked-by='@json($article->isLikedBy(Auth::user()))'
         :initial-count-likes='@json($article->count_likes)'
         :authorized='@json(Auth::check())'
-        endpoint="{{route('articles.like', ['article' => $article])}}"
+        endpoint="{{ route('articles.like', ['article' => $article]) }}"
       >
       </article-like>
     </div>
