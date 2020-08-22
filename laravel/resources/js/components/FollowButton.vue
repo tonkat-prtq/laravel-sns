@@ -17,7 +17,7 @@
 <script>
   export default {
     props: {
-      initiallsFollowedBy: {
+      initialIsFollowedBy: {
         type: Boolean,
         default: false,
       },
@@ -31,7 +31,7 @@
     },
     data() {
       return {
-        isFollowedBy: this.initiallsFollowedBy,
+        isFollowedBy: this.initialIsFollowedBy,
       }
     },
     computed: {
@@ -64,6 +64,11 @@
       },
       async follow() {
         const response = await axios.put(this.endpoint)
+
+        this.isFollowedBy = true
+      },
+      async unfollow() {
+        const response = await axios.delete(this.endpoint)
 
         this.isFollowedBy = false
       },
